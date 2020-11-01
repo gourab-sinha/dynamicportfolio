@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from profiles.models import Profile, Skill
 
 
@@ -8,7 +8,7 @@ class ProfileView(TemplateView):
     default_template = 'profile/setup.html'
     context = {}
     def get(self, request, *args, **kwargs):
-        profile = Profile.objects.all().first()
+        profile = get_list_or_404(Profile)[0]
         
         if profile is None:
             return render(request, self.default_template, {})
