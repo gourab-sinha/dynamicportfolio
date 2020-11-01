@@ -1,0 +1,1 @@
+from profiles.views.profiles import ProfileView

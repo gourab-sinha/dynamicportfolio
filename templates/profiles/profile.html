@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{%block content%}
+<div class="container-fluid">
+    <div class="row no-gutters">
+      <div class="col-md fixed panel" style="padding: 0!important;">
+          <div class="sticky-top">
+              <img src="https://images.unsplash.com/photo-1536148935331-408321065b18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" style="height: 100vh; width: 100%" alt="My Image">
+          </div>
+      </div>
+      <div class="col-md panel">
+          <div class="text-center mt-5">
+              <div style="font-family: 'PT Serif', serif" class="display-3 my-3 mx-3">{{name}}</div>
+              <div class="display-5 mx-5 text-secondary">{{bio}}</div>
+          </div>
+          <div class="text-center panel">
+              <div class="btn" style="font-family: 'PT Serif', serif">
+                  <a href="#" class="btn btn-primary btn-rounded btn-md btn-block mt-5" style="height: 75%;">Work Experience</a>
+                  <a href="#" class="btn btn-primary btn-rounded btn-md btn-block mt-5" style="height: 75%;">Projects</a>
+                  <a href="#" class="btn btn-primary btn-rounded btn-md btn-block mt-5" style="height: 75%;">Certificates</a>
+                  <a href="#" data-toggle="modal" data-target="#skills" class="btn btn-primary btn-rounded btn-md btn-block mt-5" style="height: 75%;">Skills</a>
+                  <a href="#" data-toggle="modal" data-target="#achievements" class="btn btn-primary btn-rounded btn-md btn-block mt-5" style="height: 75%;">Achievements</a>
+                  <a href="#" data-toggle="modal" data-target="#resume" class="btn btn-primary btn-rounded btn-md btn-block mt-5" style="height: 75%;">Resume</a>
+              </div>
+              <div class="d-md-block mt-4 mb-5">
+                  <a href="https://twitter.com/gourab19964u" class="text-black mx-2">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/gourabsinha/" class="text-black mx-2">
+                      <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a href="https://github.com/gourab-sinha" class="text-black mx-2">
+                      <i class="fab fa-github"></i>
+                  </a>
+                  <a href="https://www.instagram.com/gourab__sinha" class="text-black mx-2">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="mailto:gourab19964u@gmail.com" class="text-black mx-2">
+                      <i class="fas fa-envelope"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="modal" id="skills">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <div class="modal-title">
+                          <h5>Skills</h5>
+                      </div>
+                      <button class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="d-flex flex-column modal-content-font">
+                          <img style="height: 50%;width: 100%;" src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+                          
+                          <ul>
+                              {% for type,value in skills.items%}
+                              <li>{{type | title}} : 
+                                  {% for skill in value%}
+                                  {{skill}},
+                                  {%endfor%}
+                              </li>
+                              {%endfor%}
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="modal-footer modal-content-font">
+                      <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  <div class="modal" id="achievements">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <div class="modal-title">
+                          <h5>Achievements</h5>
+                      </div>
+                      <button class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="d-flex flex-column modal-content-font">
+                          <img style="height: 50%;width: 100%;" src="https://images.unsplash.com/photo-1578269174936-2709b6aeb913?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80" alt="">
+                          <ul>
+                              {% for key,value in achievements.items%}
+                              <li>{{key}}: {{value}}</li>
+                              {%endfor%}
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="modal-footer modal-content-font">
+                      <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  <div class="modal" id="resume">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <div class="modal-title">
+                          <h5>Resume</h5>
+                      </div>
+                      <button class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div style="height: 100vh;width: 100%;" class="modal-body">
+                      <div class="d-flex flex-column modal-content-font">
+                          <iframe src="https://drive.google.com/file/d/11Y79rx38sVGp1ekKaUcaxmJKyPpA8ZlR/preview" style="width:100%; height:600px;"></iframe>
+                      </div>
+                  </div>
+                  <div class="modal-footer modal-content-font">
+                      <a href="https://drive.google.com/uc?export=download&id=11Y79rx38sVGp1ekKaUcaxmJKyPpA8ZlR" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Download</a>
+                      <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+{%endblock%}
