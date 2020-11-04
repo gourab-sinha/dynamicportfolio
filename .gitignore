@@ -3,6 +3,7 @@
 .vscode
 migrations/__pycache__/ 
 mywebsite.code-workspace
+media/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
