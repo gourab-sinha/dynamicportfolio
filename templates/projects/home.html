@@ -1,0 +1,145 @@
+{% include 'navbar.html' %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <div class="col-md-9" style="padding: 0!important;height: 100vh;overflow: auto;scroll-behavior: smooth;">
+            <a class="btn btn-primary" href="#gotop" id="button"><i class="fa fa-chevron-up"></i></a>
+            <div id="gotop" class="d-flex flex-column">
+                <img style="max-width: 100%;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'ProjectHeader.jpg' %}" alt="" class="img-responsive border border-light">
+                <div class="modal-content-font display-4 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">Projects</div>
+                <!-- <div class="row no-gutters">
+                    <div class="col-md-6 text-center">
+                        <div class="card shadow" style="width:100%;">
+                            <div class="hovereffect">
+                                <img style="width: 100%" src="{% static 'projects/portfolio.jpg' %}" alt="" class="img-responsive border border-light">
+                                <div class="overlay">
+                                    <div class="hover-body-content">
+                                        <div class="d-flex flex-column">
+                                            <div class="title">Portfolio</div>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#portfolioProject">See More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow" style="width:100%;">
+                            <div class="hovereffect">
+                                <img style="width: 100%" src="{% static 'projects/textclass.jpg' %}" alt="" class="img-responsive border border-light">
+                                <div class="overlay">
+                                    <div class="hover-body-content">
+                                        <div class="d-flex flex-column">
+                                            <div class="title">Text Classification</div>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#textclassProject">See More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                {%for project in projects%}
+                <div class="row no-gutters">
+                    <div class="col-md-12">
+                        <div class="card shadow" style="width:100%;">
+                            <div class="hovereffect">
+                                <img style="width: 100%;height: 50vh;overflow: auto;" src="/media/{{project.image}}" alt="" class="img-responsive border border-light">
+                                <div class="overlay">
+                                    <div class="hover-body-content">
+                                        <div class="d-flex flex-column">
+                                            <div class="title">{{project.title}}</div>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#instabotProject">See More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <div class="card shadow" style="width:100%;">
+                            <div class="hovereffect">
+                                <img style="width: 100%" src="{% static 'projects/zomato.jpg' %}" alt="" class="img-responsive border border-light">
+                                <div class="overlay">
+                                    <div class="hover-body-content">
+                                        <div class="d-flex flex-column">
+                                            <div class="title">Zomato Data Analyser</div>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#zomatoProject">See More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                {%endfor%}
+                <!-- <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <div class="card shadow" style="width:100%;">
+                            <div class="hovereffect">
+                                <img style="width: 100%" src="{% static 'projects/casestudy.jpg' %}" alt="" class="img-responsive border border-light">
+                                <div class="overlay">
+                                    <div class="hover-body-content">
+                                        <div class="d-flex flex-column">
+                                            <div class="title">Case Study for Startup Fundings</div>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#casestudyProject">See More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow" style="width:100%;">
+                            <div class="hovereffect">
+                                <img style="width: 100%" src="{% static 'projects/linuxserver.jpg' %}" alt="" class="img-responsive border border-light">
+                                <div class="overlay">
+                                    <div class="hover-body-content">
+                                        <div class="d-flex flex-column">
+                                            <div class="title">Linux Server Configuration</div>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#serverconfigProject">See More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <div class="card shadow" style="width:100%;">
+                            <div class="hovereffect">
+                                <img style="width: 100%" src="{% static 'projects/restaurant.jpg' %}" alt="" class="img-responsive border border-light">
+                                <div class="overlay">
+                                    <div class="hover-body-content">
+                                        <div class="d-flex flex-column">
+                                            <div class="title">Restaurant Items Catalog</div>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#restaurantProject">See More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow" style="width:100%;">
+                            <div class="hovereffect">
+                                <img style="width: 100%" src="{% static 'projects/loganalysis.jpg' %}" alt="" class="img-responsive border border-light">
+                                <div class="overlay">
+                                    <div class="hover-body-content">
+                                        <div class="d-flex flex-column">
+                                            <div class="title">Log Analysis</div>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#loganalyseProject">See More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
