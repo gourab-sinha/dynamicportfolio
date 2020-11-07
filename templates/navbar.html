@@ -16,10 +16,14 @@
                                     <a href="{% url 'profile:home' %}" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Home</a>
                                 </li>
                                 
-                                <!-- <li class="nav-item">
-                                    <a href="#" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Work Experience</a>
-                                </li> -->
-                                
+                                <li class="nav-item">
+                                    <a href="{% url 'company:companies' %}" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Work Experience</a>
+                                </li>
+                                {% for company in companies %}
+                                <li class="nav-item">
+                                    <a href="{% url 'company:companydetail' company.id %}" class="nav-link"  style="font-family: 'PT Serif',Serif;">{{company.name}}</a>
+                                </li>
+                                {% endfor %}
                                 <li class="nav-item">
                                     <a href="{% url 'project:projects' %}" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Projects</a>
                                 </li>
@@ -39,7 +43,33 @@
         </div>
         <!--  MODALS Declarations      -->
         <!--  Work Experiences      -->
-
+        {%for company in companies %}
+        <div class="modal" id="{{company.name}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            <h5>{{company.name}}</h5>
+                        </div>
+                        <button class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex flex-column modal-content-font">
+                            <h6>Duration: {{company.joining_date}} - {%if company.currently_working%} Present {%else%} {{company.ending_date}} {%endif%}
+                            </h6>
+                            <p class="text-left">
+                                {{company.role}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer modal-content-font">
+                        <!-- <a href="{{project.verify_url}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Github</a> -->
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
         <!--  Projects Completed      -->
         {%for project in projects%}
         <div class="modal" id="{{project.title}}">

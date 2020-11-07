@@ -1,0 +1,2 @@
+from workexperiences.views.company import CompanyView
+from workexperiences.views.company_detail import CompanyDetailView

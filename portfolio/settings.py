@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Own application
     'profiles',
     'projects',
+    'workexperiences',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'profiles.context_processors.profile',
                 'projects.context_processors.projects',
+                'workexperiences.context_processors.work_experiences',
             ],
         },
     },
