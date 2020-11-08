@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'profiles',
     'projects',
     'workexperiences',
+    'certifications',
 ]
 
 MIDDLEWARE = [
@@ -67,9 +68,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'profiles.context_processors.profile',
+                # 'profiles.context_processors.profile',
                 'projects.context_processors.projects',
                 'workexperiences.context_processors.work_experiences',
+                'certifications.context_processors.certificates',
             ],
         },
     },
@@ -133,3 +135,5 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+LOGIN_REDIRECT_URL = '/admin/'

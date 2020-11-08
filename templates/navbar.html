@@ -15,6 +15,9 @@
                                 <li class="nav-item">
                                     <a href="{% url 'profile:home' %}" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Home</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#resume" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Resume</a>
+                                </li>
                                 
                                 <li class="nav-item">
                                     <a href="{% url 'company:companies' %}" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Work Experience</a>
@@ -29,13 +32,20 @@
                                 </li>
                                 {% for project in projects %}
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" data-toggle="modal" data-target="#{{project.title}}" style="font-family: 'PT Serif',Serif;">{{project.title}}</a>
+                                    <a href="#" class="nav-link" data-toggle="modal" data-target="#{{project.slug}}" style="font-family: 'PT Serif',Serif;">{{project.title}}</a>
                                 </li>
                                 {% endfor %}
                                 
-                                <!-- <li class="nav-item">
-                                    <a href="#" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Certifications</a>
-                                </li> -->
+                                <li class="nav-item">
+                                    <a href="{% url 'certificate:certificates' %}" class="nav-link font-weight-bold text-dark" style="font-family: 'PT Serif',Serif;">Certifications</a>
+                                </li>
+
+                                {% for certificate in certificates %}
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" data-toggle="modal" data-target="#{{certificate.slug}}" style="font-family: 'PT Serif',Serif;">{{certificate.title}}</a>
+                                </li>
+                                {% endfor %}
+                                
                             </ul>
                         </div>
                     </div>
@@ -44,7 +54,7 @@
         <!--  MODALS Declarations      -->
         <!--  Work Experiences      -->
         {%for company in companies %}
-        <div class="modal" id="{{company.name}}">
+        <div class="modal" id="{{company.slug}}">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -57,13 +67,18 @@
                         <div class="d-flex flex-column modal-content-font">
                             <h6>Duration: {{company.joining_date}} - {%if company.currently_working%} Present {%else%} {{company.ending_date}} {%endif%}
                             </h6>
-                            <p class="text-left">
-                                {{company.role}}
-                            </p>
+                            <ul class="text-left">
+                                <li>Role: {{company.role}} </li>
+                                <li>{%if company.icurrently_working%}
+                                    Working in : {{company.team}}
+                                    {%else%}
+                                    Worked in : {{company.team}}
+                                    {%endif%}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="modal-footer modal-content-font">
-                        <!-- <a href="{{project.verify_url}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Github</a> -->
                         <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -72,7 +87,7 @@
         {%endfor%}
         <!--  Projects Completed      -->
         {%for project in projects%}
-        <div class="modal" id="{{project.title}}">
+        <div class="modal" id="{{project.slug}}">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -90,7 +105,9 @@
                         </div>
                     </div>
                     <div class="modal-footer modal-content-font">
+                        {%if project.verify_url%}
                         <a href="{{project.verify_url}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Github</a>
+                        {%endif%}
                         <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -99,4 +116,37 @@
         {%endfor%}
 
         <!--  Certifications       -->
+        {%for certificate in certificates%}
+        <div class="modal" id="{{certificate.slug}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            <h5>{{certificate.title}}</h5>
+                        </div>
+                        <button class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex flex-column modal-content-font">
+                            <h6>Duration: {{certificate.start_date}} - {{certificate.end_date}}</h6>
+                            {%if certificate.skills|length > 0 %}
+                                Technologies covered: 
+                                {%for skill in certificate.skills.all%}
+                                {{skill}}
+                                {%endfor%}
+                            {%endif%}
+                            <br/>
+                            {{certificate.description}}
+                        </div>
+                    </div>
+                    <div class="modal-footer modal-content-font">
+                        {%if certificate.verify_url %}
+                        <a href="{{certificate.verify_url}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Verify</a>
+                        {%endif%}
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
 {% endblock content %}

@@ -5,21 +5,44 @@
         <div class="col-md-9" style="padding: 0!important;height: 100vh;overflow: auto;scroll-behavior: smooth;">
             <a class="btn btn-primary" href="#gotop" id="button"><i class="fa fa-chevron-up"></i></a>
             <div id="gotop" class="d-flex flex-column">
+                {%if company_detail.image %}
                 <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="/media/{{company_detail.image}}" alt="" class="img-responsive border border-light">
-                <div class="modal-content-font h1 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
+                <div class="modal-content-font h3 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
+                    <div class="h5">
+                        {{company_detail.joining_date}} - 
+                        {%if company_detail.currently_working %}
+                        {%else%}
+                        {{company_detail.ending_date}}
+                        {%endif%}
+                    </div>
+                {%else%}
+                <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'company/defaultCompany.jpeg' %}" alt="" class="img-responsive border border-light">
+                <div class="modal-content-font h3 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
+                    <div class="h5">
+                        {{company_detail.joining_date}} - 
+                        {%if company_detail.currently_working %}
+                        {%else%}
+                        {{company_detail.ending_date}}
+                        {%endif%}
+                    </div>
                 </div>
+                {%endif%}
 
                 {%for project in company_detail.list_projects%}
                 <div class="row no-gutters">
                     <div class="col-md-12">
                         <div class="card shadow" style="width:100%;">
                             <div class="hovereffect">
+                                {%if project.image %}
                                 <img style="width: 100%;height: 50vh;overflow: hidden;" src="/media/{{project.image}}" alt="" class="img-responsive border border-light">
+                                {%else%}
+                                <img style="width: 100%;height: 50vh;overflow: hidden;" src="{% static 'company/defaultProject.jpeg' %}" alt="" class="img-responsive border border-light">
+                                {%endif%}
                                 <div class="overlay">
                                     <div class="hover-body-content">
                                         <div class="d-flex flex-column">
                                             <div class="title">{{project.title}}</div>
-                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#{{project.title}}">See More</button>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#{{project.slug}}">See More</button>
                                         </div>
                                     </div>
                                 </div>
@@ -34,7 +57,7 @@
 </div>
 <!-- Company projects modals -->
 {%for project in company_detail.list_projects%}
-    <div class="modal" id="{{project.title}}">
+    <div class="modal" id="{{project.slug}}">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -52,7 +75,6 @@
                     </div>
                 </div>
                 <div class="modal-footer modal-content-font">
-                    <a href="{{project.verify_url}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Github</a>
                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>

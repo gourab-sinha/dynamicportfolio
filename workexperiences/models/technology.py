@@ -13,6 +13,7 @@ class Technology(models.Model):
         (SkillType.OTHER, 'Other'),
     )
     tech_type = models.CharField(max_length=50, choices=TYPE)
+    slug = models.CharField(max_length=200,unique=True)
 
     def __str__(self):
         return self.name

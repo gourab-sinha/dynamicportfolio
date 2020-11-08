@@ -5,19 +5,24 @@
         <div class="col-md-9" style="padding: 0!important;height: 100vh;overflow: auto;scroll-behavior: smooth;">
             <a class="btn btn-primary" href="#gotop" id="button"><i class="fa fa-chevron-up"></i></a>
             <div id="gotop" class="d-flex flex-column">
-                <img style="max-width: 100%;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'workHeader.jpg' %}" alt="" class="img-responsive border border-light">
+                <img style="max-width: 100%;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'company/companyHeader.jpg' %}" alt="" class="img-responsive border border-light">
                 <div class="modal-content-font display-4 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">Work Experience</div>
                 {%for company in companies%}
                 <div class="row no-gutters">
                     <div class="col-md-12">
                         <div class="card shadow" style="width:100%;">
                             <div class="hovereffect">
+                                {%if company.image %}
                                 <img style="width: 100%;height: 50vh;overflow: hidden;" src="/media/{{company.image}}" alt="" class="img-responsive border border-light">
+                                {%else%}
+                                <img style="width: 100%;height: 50vh;overflow: hidden;" src="{% static 'company/defaultCompany.jpeg' %}" alt="" class="img-responsive border border-light">
+                                {%endif%}
                                 <div class="overlay">
                                     <div class="hover-body-content">
                                         <div class="d-flex flex-column">
                                             <div class="title">{{company.name}}</div>
-                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#{{company.name}}">See More</button>
+                                            <button style="color: white" class="btn btn-link" data-toggle="modal" data-target="#{{company.slug}}">See Role</button>
+                                            <a href="{%url 'company:companydetail' company.id%}">See Projects</a>
                                         </div>
                                     </div>
                                 </div>

@@ -6,12 +6,13 @@ class Company(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     team = models.CharField(max_length=50, blank=False, null=False)
     role = models.CharField(max_length=50, blank=False, null=False)
-    image = models.ImageField(upload_to='company/', default='company/default.jpg')
+    image = models.ImageField(upload_to='company/', blank=True)
     joining_date = models.DateField()
     ending_date = models.DateField()
     currently_working = models.BooleanField(default=True)
     techs = models.ManyToManyField(Technology)
     projects = models.ManyToManyField(CompanyProject)
+    slug = models.CharField(max_length=200,unique=True)
 
     def __str__(self):
         return self.name

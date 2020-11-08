@@ -6,3 +6,4 @@ from projects.models import Project
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('title', 'start_date', 'end_date', 'image','description','verify_url')
     list_filter = ('title', 'start_date', 'end_date')
+    prepopulated_fields = {'slug': ('title',)}

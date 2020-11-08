@@ -17,13 +17,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
+
+handler500 = 'profiles.views.handler500'
+handler400 = 'profiles.views.handler400'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('profiles.urls')),
     path('', include('projects.urls')),
     path('', include('workexperiences.urls')),
+    path('', include('certifications.urls')),
 ]
 
 if settings.DEBUG:

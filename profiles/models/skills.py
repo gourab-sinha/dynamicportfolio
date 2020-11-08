@@ -22,6 +22,7 @@ class Skill(models.Model):
         (SkillType.OTHER, 'Other'),
     )
     skill_type = models.CharField(max_length=50, choices=TYPE)
+    slug = models.CharField(max_length=200,unique=True)
 
     def __str__(self):
         return self.title
