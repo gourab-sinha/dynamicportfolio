@@ -8,7 +8,7 @@ class Company(models.Model):
     role = models.CharField(max_length=50, blank=False, null=False)
     image = models.ImageField(upload_to='company/', blank=True)
     joining_date = models.DateField()
-    ending_date = models.DateField()
+    ending_date = models.DateField(null=True, blank=True)
     currently_working = models.BooleanField(default=True)
     techs = models.ManyToManyField(Technology)
     projects = models.ManyToManyField(CompanyProject)
@@ -19,7 +19,7 @@ class Company(models.Model):
 
     @property
     def list_projects(self):
-        return [project for project in self.projects.all()]
+        return reversed([project for project in self.projects.all()])
 
     @property
     def list_techs(self):

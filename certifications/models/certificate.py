@@ -12,7 +12,7 @@ class Certificate(models.Model):
     image = models.ImageField(upload_to='certificates/', blank=True)
     verify_url = models.URLField(null=True, blank=True)
     description = models.TextField(blank=True)
-    skills = models.ManyToManyField(Skill)
+    skills = models.ManyToManyField(Skill, blank=True)
     slug = models.CharField(max_length=200,unique=True)
 
 

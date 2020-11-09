@@ -100,6 +100,13 @@
                         <div class="d-flex flex-column modal-content-font">
                             <h6>Duration: {{project.start_date}} - {{project.end_date}}</h6>
                             <p class="text-left">
+                                {%if project.tech_used.all|length > 0 %}
+                                    Technologies used: 
+                                    {%for tech in project.tech_used.all%}
+                                        {{tech}}
+                                    {%endfor%}
+                                    <br/>
+                                {%endif%}
                                 {{project.description}}
                             </p>
                         </div>
@@ -129,14 +136,16 @@
                     <div class="modal-body">
                         <div class="d-flex flex-column modal-content-font">
                             <h6>Duration: {{certificate.start_date}} - {{certificate.end_date}}</h6>
-                            {%if certificate.skills|length > 0 %}
+                            {%if certificate.skills.all|length > 0 %}
                                 Technologies covered: 
                                 {%for skill in certificate.skills.all%}
                                 {{skill}}
                                 {%endfor%}
-                            {%endif%}
-                            <br/>
+                                <br/>
+                                {{certificate.description}} 
+                            {%else%}
                             {{certificate.description}}
+                            {%endif%}
                         </div>
                     </div>
                     <div class="modal-footer modal-content-font">

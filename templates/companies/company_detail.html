@@ -9,8 +9,9 @@
                 <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="/media/{{company_detail.image}}" alt="" class="img-responsive border border-light">
                 <div class="modal-content-font h3 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
                     <div class="h5">
-                        {{company_detail.joining_date}} - 
-                        {%if company_detail.currently_working %}
+                        {{company_detail.joining_date}}
+                        {%if company_detail.currently_working == true %}
+                        Present
                         {%else%}
                         {{company_detail.ending_date}}
                         {%endif%}
@@ -21,6 +22,7 @@
                     <div class="h5">
                         {{company_detail.joining_date}} - 
                         {%if company_detail.currently_working %}
+                        Present
                         {%else%}
                         {{company_detail.ending_date}}
                         {%endif%}
@@ -56,7 +58,7 @@
     </div>
 </div>
 <!-- Company projects modals -->
-{%for project in company_detail.list_projects%}
+{%for project in company_detail.list_projects %}
     <div class="modal" id="{{project.slug}}">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -68,8 +70,21 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex flex-column modal-content-font">
-                        <h6>Duration: {{project.start_date}} - {{project.end_date}}</h6>
+                        <h6>Duration: {{project.start_date}} - 
+                            {%if project.end_date %}
+                            {{project.end_date}}
+                            {%else%}
+                            Present
+                            {%endif%}
+                        </h6>
                         <p class="text-left">
+                            {%if project.tech_used.all|length > 0 %}
+                                Technologies used:
+                                {%for tech in project.tech_used.all %}
+                                    {{tech}}
+                                {%endfor%}
+                                <br/>
+                            {%endif%}
                             {{project.description}}
                         </p>
                     </div>
