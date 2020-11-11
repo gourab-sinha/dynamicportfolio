@@ -98,7 +98,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="d-flex flex-column modal-content-font">
-                            <h6>Duration: {{project.start_date}} - {{project.end_date}}</h6>
+                            <h6>Duration: {{project.start_date}} - 
+                                {%if project.end_date%}
+                                {{project.end_date}}
+                                {%else%}
+                                Present
+                                {%endif%}
+                            </h6>
                             <p class="text-left">
                                 {%if project.tech_used.all|length > 0 %}
                                     Technologies used: 
