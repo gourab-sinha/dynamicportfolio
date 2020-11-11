@@ -3,7 +3,7 @@ from profiles.models import Skill
 class Project(models.Model):
     title = models.CharField(max_length=50, blank=False, null=False)
     start_date = models.DateField()
-    end_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
     image = models.ImageField(upload_to='projects/', blank=True)
     description = models.TextField(blank=False, null=False)
     verify_url = models.URLField(blank=True)
