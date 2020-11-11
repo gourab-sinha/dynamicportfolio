@@ -10,8 +10,8 @@ class Company(models.Model):
     joining_date = models.DateField()
     ending_date = models.DateField(null=True, blank=True)
     currently_working = models.BooleanField(default=True)
-    techs = models.ManyToManyField(Technology)
-    projects = models.ManyToManyField(CompanyProject)
+    techs = models.ManyToManyField(Technology, blank=True)
+    projects = models.ManyToManyField(CompanyProject, blank=True)
     slug = models.CharField(max_length=200,unique=True)
 
     def __str__(self):
