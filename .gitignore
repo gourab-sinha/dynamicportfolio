@@ -4,6 +4,10 @@
 migrations/__pycache__/ 
 mywebsite.code-workspace
 media/
+portfolio/settings.py
+venv/
+media/
+staticfiles/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
