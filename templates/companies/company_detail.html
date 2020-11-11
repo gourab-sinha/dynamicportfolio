@@ -7,17 +7,9 @@
             <div id="gotop" class="d-flex flex-column">
                 {%if company_detail.image %}
                 <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="/media/{{company_detail.image}}" alt="" class="img-responsive border border-light">
-                <div class="modal-content-font h3 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
-                    <div class="h5">
-                        {{company_detail.joining_date}}
-                        {%if company_detail.currently_working == true %}
-                        Present
-                        {%else%}
-                        {{company_detail.ending_date}}
-                        {%endif%}
-                    </div>
                 {%else%}
                 <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'company/defaultCompany.jpeg' %}" alt="" class="img-responsive border border-light">
+                {%endif%}
                 <div class="modal-content-font h3 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
                     <div class="h5">
                         {{company_detail.joining_date}} - 
@@ -28,7 +20,6 @@
                         {%endif%}
                     </div>
                 </div>
-                {%endif%}
 
                 {%for project in company_detail.list_projects%}
                 <div class="row no-gutters">
