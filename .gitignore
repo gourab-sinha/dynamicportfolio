@@ -8,6 +8,7 @@ portfolio/settings.py
 venv/
 media/
 staticfiles/
+db.sqlit3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
