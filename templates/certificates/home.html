@@ -5,8 +5,8 @@
         <div class="col-md-9" style="padding: 0!important;height: 100vh;overflow: auto;scroll-behavior: smooth;">
             <a class="btn btn-primary" href="#gotop" id="button"><i class="fa fa-chevron-up"></i></a>
             <div id="gotop" class="d-flex flex-column">
-                <img style="max-width: 100%;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'certificate/certificateHeader.jpeg' %}" alt="" class="img-responsive border border-light">
-                <div class="modal-content-font display-4 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">Certifications</div>
+                <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'certificate/certificateHeader.jpeg' %}" alt="" class="img-responsive border border-light">
+                <div class="modal-content-font h4 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">Certifications</div>
                 {%for certificate in certificates%}
                 <div class="row no-gutters">
                     <div class="col-md-12">

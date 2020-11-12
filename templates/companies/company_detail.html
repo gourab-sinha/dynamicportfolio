@@ -10,8 +10,8 @@
                 {%else%}
                 <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'company/defaultCompany.jpeg' %}" alt="" class="img-responsive border border-light">
                 {%endif%}
-                <div class="modal-content-font h3 text-white" style="position:absolute;top: 20%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
-                    <div class="h5">
+                <div class="modal-content-font h6 text-white" style="position:absolute;top: 15%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
+                    <div class="h6">
                         {{company_detail.joining_date}} - 
                         {%if company_detail.currently_working %}
                         Present
