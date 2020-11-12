@@ -6,11 +6,11 @@
             <a class="btn btn-primary" href="#gotop" id="button"><i class="fa fa-chevron-up"></i></a>
             <div id="gotop" class="d-flex flex-column">
                 {%if company_detail.image %}
-                <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="/media/{{company_detail.image}}" alt="" class="img-responsive border border-light">
+                <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(3px);" src="/media/{{company_detail.image}}" alt="" class="img-responsive border border-light">
                 {%else%}
-                <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(2px);" src="{% static 'company/defaultCompany.jpeg' %}" alt="" class="img-responsive border border-light">
+                <img style="max-width: 100%;max-height: 40vh;filter: blur(2px);-webkit-filter: blur(3px);" src="{% static 'company/defaultCompany.jpeg' %}" alt="" class="img-responsive border border-light">
                 {%endif%}
-                <div class="modal-content-font h6 text-white" style="position:absolute;top: 15%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
+                <div class="modal-content-font h6 text-dark" style="position:absolute;top: 15%;left: 50%;transform: translate(-50%,-50%);">{{company_detail.role}} @ {{company_detail.name}}
                     <div class="h6">
                         {{company_detail.joining_date}} - 
                         {%if company_detail.currently_working %}
