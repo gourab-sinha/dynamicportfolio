@@ -141,7 +141,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="d-flex flex-column modal-content-font">
-                            <h6>Duration: {{certificate.start_date}} - {{certificate.end_date}}</h6>
+                            <h6>Duration: {{certificate.start_date}} - 
+                                {%if certificate.expire_date %}
+                                {{certificate.expire_date}}
+                                {%else%}
+                                Present
+                                {%endif%}
+                            </h6>
                             {%if certificate.skills.all|length > 0 %}
                                 Technologies covered: 
                                 {%for skill in certificate.skills.all%}
