@@ -22,19 +22,21 @@ As we all know with the passage of time we enhance our skills, we add more achie
 4. Git
 
 ## Local Enivronment Setup
-1.1 Create virtual environment `python3 -m venv venv` macOS or linux  
-1.2 Create virtual environment `py -m venv venv` windows  
-2. Activate venv `source venv/bin/activate`   
-3. `pip3 install -r ~/dynamicportfolio/requirements.txt`  
-4. `cd dynamicportfolio`  
-5. `open portfolio/settings.py edit the SECRET_KEY. Never expose your SECRET_KEY so use environment variable`   
-6. `python3 manage.py makemigrations` this will create the db.sqlite3 and required tables  
-7. `python3 manage.py migrate` will apply all the changes  
-8. `python3 manage.py createsuperuser` this will create the superuser or your account.  
-9. `python3 manage.py runserver` it will run the `dynamicportfolio` 
-10. navigate to `127.0.0.0:8000/admin`  
-11. Add new details 
-12. navigate to `127.0.0.0:8000` to see the changes    
+1. `Forked the repository`  
+2. `git clone [your_project_url]`  
+3. Create virtual environment `python3 -m venv venv` macOS or linux  
+4. Create virtual environment `py -m venv venv` windows  
+5. Activate venv `source venv/bin/activate`   
+6. `pip3 install -r ~/dynamicportfolio/requirements.txt`  
+7. `cd dynamicportfolio`  
+8. `open portfolio/settings.py edit the SECRET_KEY. Never expose your SECRET_KEY so use environment variable`   
+9. `python3 manage.py makemigrations` this will create the db.sqlite3 and required tables  
+10. `python3 manage.py migrate` will apply all the changes  
+11. `python3 manage.py createsuperuser` this will create the superuser or your account.  
+12. `python3 manage.py runserver` it will run the `dynamicportfolio` 
+13. navigate to `127.0.0.0:8000/admin`  
+14. Add new details 
+15. navigate to `127.0.0.0:8000` to see the changes    
 
 ### Update Social Links
 1. `edit dynamicportfolio/templates/profiles.html line: 24 - 40.`  
