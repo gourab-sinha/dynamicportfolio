@@ -36,6 +36,8 @@ As we all know with the passage of time we enhance our skills, we add more achie
 11. Add new details 
 12. navigate to `127.0.0.0:8000` to see the changes    
 
+### Update Social Links
+1. `edit dynamicportfolio/templates/profiles.html line: 24 - 40.`  
 ## Deployment to Amazon Lightsail | EC2 | Heroku
 ### Amazon Host - Ubuntu 20.X.X
 1. [Linux Server Configuration](https://www.youtube.com/watch?v=Sa_kQheCnds&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=13)  
